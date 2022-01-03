@@ -46,6 +46,14 @@ func main() {
 		fmt.Printf("\nThere are %v tickets remaining for %v\n", remainingTickets, conferenceName)
 		fmt.Printf("\nThese are all the bookings on fullname: %v\n", bookings)
 		fmt.Printf("\nThese are all the bookings on firstname: %v\n", firstNames)
-		fmt.Printf("\n\n********************************\nYou will now return to the homescreen\n********************************\n\n")
+
+		noTicketsRemaining := remainingTickets == 0
+		if noTicketsRemaining {
+			fmt.Println("\n\n********************************\nOur conference is SOLD OUT!\n********************************")
+			break
+		} else {
+			fmt.Println("\n\n********************************\nYou will now return to the homescreen\n********************************")
+			continue
+		}
 	}
 }
