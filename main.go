@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 	conferenceName := "Go Conference"
@@ -33,9 +36,16 @@ func main() {
 		remainingTickets -= userTickets
 		bookings = append(bookings, firstName+" "+lastName)
 
-		fmt.Printf("\nThank you %v %v for booking %v tickets.\nYou will receive a confirmation email at %v.\nNow fuck off!\n", firstName, lastName, userTickets, email)
+		firstNames := []string{}
+		for _, booking := range bookings {
+			var names = strings.Fields(booking)
+			firstNames = append(firstNames, names[0])
+		}
+
+		fmt.Printf("\nThank you %v %v for booking %v tickets.\nYou will receive a confirmation email at %v.\nNow bugger off!\n", firstName, lastName, userTickets, email)
 		fmt.Printf("\nThere are %v tickets remaining for %v\n", remainingTickets, conferenceName)
-		fmt.Printf("\nThese are all the bookings: %v\n", bookings)
+		fmt.Printf("\nThese are all the bookings on fullname: %v\n", bookings)
+		fmt.Printf("\nThese are all the bookings on firstname: %v\n", firstNames)
 		fmt.Printf("\n\n********************************\nYou will now return to the homescreen\n********************************\n\n")
 	}
 }
